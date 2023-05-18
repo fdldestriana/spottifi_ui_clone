@@ -6,7 +6,6 @@ import '../controller/home_controller.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
-
   Widget build(context, HomeController controller) {
     controller.view = this;
     Map<String, String> albumCovers = {
@@ -33,6 +32,7 @@ class HomeView extends StatefulWidget {
       backgroundColor: ColorLib.black,
       appBar: AppBar(
         backgroundColor: ColorLib.black,
+        elevation: 0.0,
         title: Text(
           "Good morning",
           style: GoogleFonts.roboto(

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:spotify_ui_clone/core.dart';
 import 'package:spotify_ui_clone/utils/color_lib.dart';
 
@@ -11,21 +10,21 @@ class RootView extends StatefulWidget {
     List<StatefulWidget> pages = const [HomeView()];
 
     return Scaffold(
+      // extendedBody is set to true to make  bottomNavigationBar transparent
+      extendBody: true,
       body: pages[controller.currentIndex],
       bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          color: ColorLib.white,
-          gradient: const LinearGradient(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Colors.transparent, Color.fromRGBO(0, 0, 0, 1)],
+            colors: [Color.fromRGBO(0, 0, 0, 0.75), Color.fromRGBO(0, 0, 0, 1)],
           ),
         ),
         child: BottomNavigationBar(
           backgroundColor: Colors.transparent,
-          fixedColor: Colors.transparent,
-          selectedLabelStyle: GoogleFonts.roboto(color: ColorLib.white),
-          unselectedLabelStyle: GoogleFonts.roboto(color: ColorLib.label),
+          selectedItemColor: ColorLib.white,
+          unselectedItemColor: ColorLib.label,
           currentIndex: controller.currentIndex,
           onTap: (value) {},
           type: BottomNavigationBarType.fixed,

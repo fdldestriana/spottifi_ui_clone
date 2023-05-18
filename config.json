@@ -2,6 +2,7 @@
     "openai_key": "",
     "modules": [
         "root",
-        "home"
+        "home",
+        "playing"
     ]
 }
