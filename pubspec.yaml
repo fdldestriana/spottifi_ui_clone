@@ -68,7 +68,8 @@ flutter:
     - assets/buttons/icons/
     - assets/buttons/playing/
     - assets/daily_mix/
-    - assets/music/
+    - assets/lyric/
+    - assets/music/heal_the_world.mp3
     - assets/shows/
   #   - images/a_dot_ham.jpeg
 

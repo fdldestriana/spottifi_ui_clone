@@ -11,7 +11,7 @@ class PlayingController extends State<PlayingView> implements MvcController {
   void initState() {
     instance = this;
     super.initState();
-    // setAudio();
+
     audioPlayer.onPlayerStateChanged.listen(
       (event) {
         setState(() {
@@ -51,10 +51,16 @@ class PlayingController extends State<PlayingView> implements MvcController {
   bool isPlaying = false;
   Duration duration = Duration.zero;
   Duration position = Duration.zero;
-  String url =
-      'https://luvmp.com/wp-content/uploads/2022/04/Michael_Jackson_-_Heal_the_World_Lumpv.Com_.mp3';
 
-  // Future setAudio() async {
-  //   audioPlayer.setSource(AssetSource('assets/music/heal_the_world.mp3'));
-  // }
+  void playAudio() async {
+    if (isPlaying) {
+      await audioPlayer.pause();
+    } else {
+      await audioPlayer.setSource(AssetSource('music/heal_the_world.mp3'));
+      await audioPlayer.setVolume(80);
+      await audioPlayer.resume();
+      isPlaying = true;
+      setState(() {});
+    }
+  }
 }

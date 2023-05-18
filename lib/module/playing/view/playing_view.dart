@@ -1,4 +1,3 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:spotify_ui_clone/core.dart';
@@ -81,14 +80,14 @@ class PlayingView extends StatefulWidget {
         body: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           children: [
-            const SizedBox(height: 54),
+            const SizedBox(height: 30),
             Image.asset(
               'assets/album_covers/dangerous_big.png',
               fit: BoxFit.cover,
               width: 343,
               height: 343,
             ),
-            const SizedBox(height: 54),
+            const SizedBox(height: 30),
             Column(
               children: [
                 Row(
@@ -134,6 +133,8 @@ class PlayingView extends StatefulWidget {
             Column(
               children: [
                 Slider(
+                    activeColor: ColorLib.white,
+                    inactiveColor: ColorLib.trackLine,
                     min: 0,
                     max: controller.duration.inSeconds.toDouble(),
                     value: controller.position.inSeconds.toDouble(),
@@ -177,15 +178,32 @@ class PlayingView extends StatefulWidget {
                     icon: Image.asset('assets/buttons/playing/previous.png'),
                   ),
                   IconButton(
-                    onPressed: () async {
-                      if (controller.isPlaying) {
-                        await controller.audioPlayer.pause();
-                      } else {
-                        await controller.audioPlayer
-                            .play(AssetSource('assets/music/heal_the_world'));
-                      }
+                    onPressed: () {
+                      controller.playAudio();
                     },
-                    icon: Image.asset('assets/buttons/playing/play.png'),
+                    icon: controller.isPlaying
+                        ? Container(
+                            width: 56,
+                            height: 56,
+                            decoration: BoxDecoration(
+                                color: ColorLib.white, shape: BoxShape.circle),
+                            child: Icon(
+                              Icons.pause,
+                              color: ColorLib.black,
+                              size: 28,
+                            ),
+                          )
+                        : Container(
+                            width: 56,
+                            height: 56,
+                            decoration: BoxDecoration(
+                                color: ColorLib.white, shape: BoxShape.circle),
+                            child: Icon(
+                              Icons.play_arrow,
+                              color: ColorLib.black,
+                              size: 28,
+                            ),
+                          ),
                   ),
                   IconButton(
                     onPressed: () {},
@@ -197,7 +215,25 @@ class PlayingView extends StatefulWidget {
                   )
                 ],
               ),
-            )
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                    onPressed: () {},
+                    icon: Image.asset('assets/buttons/playing/device.png')),
+                const SizedBox(
+                  width: 200,
+                ),
+                IconButton(
+                    onPressed: () {},
+                    icon: Image.asset('assets/buttons/playing/share.png')),
+                IconButton(
+                    onPressed: () {},
+                    icon: Image.asset('assets/buttons/playing/queue.png')),
+              ],
+            ),
+            Image.asset('assets/lyric/lyric_card.png')
           ],
         ),
       ),
