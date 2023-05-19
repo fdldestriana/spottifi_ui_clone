@@ -9,4 +9,6 @@ export 'package:spotify_ui_clone/module/playing/controller/playing_controller.da
 export 'package:spotify_ui_clone/module/playing/view/playing_view.dart';
 export 'package:spotify_ui_clone/module/root/controller/root_controller.dart';
 export 'package:spotify_ui_clone/module/root/view/root_view.dart';
+export 'package:spotify_ui_clone/module/spotify_search/controller/spotify_search_controller.dart';
+export 'package:spotify_ui_clone/module/spotify_search/view/spotify_search_view.dart';
 export 'state_util.dart';

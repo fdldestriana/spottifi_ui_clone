@@ -3,6 +3,7 @@
     "modules": [
         "root",
         "home",
-        "playing"
+        "playing",
+        "spotify_search"
     ]
 }

@@ -7,7 +7,7 @@ class RootView extends StatefulWidget {
 
   Widget build(context, RootController controller) {
     controller.view = this;
-    List<StatefulWidget> pages = const [HomeView()];
+    List<StatefulWidget> pages = const [HomeView(), SpotifySearchView()];
 
     return Scaffold(
       // extendedBody is set to true to make  bottomNavigationBar transparent
@@ -26,7 +26,9 @@ class RootView extends StatefulWidget {
           selectedItemColor: ColorLib.white,
           unselectedItemColor: ColorLib.label,
           currentIndex: controller.currentIndex,
-          onTap: (value) {},
+          onTap: (value) {
+            controller.setCurrentIndex(value);
+          },
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
