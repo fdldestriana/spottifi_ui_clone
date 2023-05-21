@@ -67,6 +67,7 @@ flutter:
     - assets/buttons/bottom_navbar/
     - assets/buttons/icons/
     - assets/buttons/playing/
+    - assets/cards/
     - assets/daily_mix/
     - assets/lyric/
     - assets/music/heal_the_world.mp3

@@ -31,66 +31,79 @@ class SpotifySearchView extends StatefulWidget {
           ],
         ),
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            children: [
-              const SizedBox(height: 8),
-              Center(
-                child: Container(
-                  width: 343,
-                  height: 48,
-                  decoration: BoxDecoration(
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: ListView(
+          shrinkWrap: true,
+          children: [
+            const SizedBox(height: 8),
+            Center(
+              child: Container(
+                width: 343,
+                height: 48,
+                decoration: BoxDecoration(
+                  color: ColorLib.white,
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: TextField(
+                  controller: controller.searchController,
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.only(left: 12),
+                    label: controller.searchController.text.isNotEmpty
+                        ? null
+                        : Row(
+                            children: [
+                              Image.asset(
+                                'assets/buttons/icons/search.png',
+                                color: ColorLib.black,
+                              ),
+                              const SizedBox(width: 12),
+                              Text(
+                                'What do you want to listen to?',
+                                style: GoogleFonts.roboto(
+                                    color: ColorLib.grayBlack1,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500),
+                              )
+                            ],
+                          ),
+                    hintStyle: GoogleFonts.roboto(
+                        color: ColorLib.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 30),
+            TextButton(
+              onPressed: () {},
+              child: Text(
+                'Browse all',
+                style: GoogleFonts.roboto(
                     color: ColorLib.white,
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: TextField(
-                    controller: controller.searchController,
-                    decoration: InputDecoration(
-                      hintText: 'What do you want to listen to?',
-                      hintStyle: GoogleFonts.roboto(
-                          color: ColorLib.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500),
-                      prefix: Padding(
-                        padding: const EdgeInsets.only(left: 12, right: 5),
-                        child: Image.asset(
-                          'assets/buttons/icons/search.png',
-                          color: ColorLib.black,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700),
               ),
-              const SizedBox(height: 40),
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  'Browse all',
-                  style: GoogleFonts.roboto(
-                      color: ColorLib.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700),
-                ),
+            ),
+            const SizedBox(height: 15),
+            GridView.builder(
+              physics: const ScrollPhysics(),
+              itemCount: 22,
+              shrinkWrap: true,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  childAspectRatio: 1.76 / 1,
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 16,
+                  crossAxisCount: 2),
+              itemBuilder: (context, index) => ClipRRect(
+                child: InkWell(
+                    onTap: () {},
+                    child:
+                        Image.asset('assets/cards/Category Card-$index.png')),
               ),
-              const SizedBox(height: 16),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                child: GridView.builder(
-                  shrinkWrap: true,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      childAspectRatio: 3.7 / 1,
-                      crossAxisSpacing: 16,
-                      mainAxisSpacing: 16,
-                      crossAxisCount: 2),
-                  itemBuilder: (context, index) =>
-                      Container(color: Colors.amber),
-                ),
-              )
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );
