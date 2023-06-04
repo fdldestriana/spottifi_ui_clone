@@ -32,12 +32,10 @@ class RootView extends StatefulWidget {
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
-                icon: Image.asset(
-                    'assets/buttons/bottom_navbar/home_inactive.png'),
+                icon: Image.asset('assets/buttons/bottom_navbar/home.png'),
                 label: 'Home'),
             BottomNavigationBarItem(
-                icon: Image.asset(
-                    'assets/buttons/bottom_navbar/search_active.png'),
+                icon: Image.asset('assets/buttons/bottom_navbar/search.png'),
                 label: 'Search'),
             BottomNavigationBarItem(
                 icon: Image.asset(
